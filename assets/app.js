@@ -4,8 +4,7 @@ var app=angular.module("app", [])
 //dependency inject $scope
 
 
-app.controller("PostsCtrl", function
-($scope, PostsSvc) {
+app.controller("PostsCtrl", function ($scope, PostsSvc) {
 
 	//the function runs when the "add post" btn is clicked
 	$scope.addPost = function() {
@@ -25,19 +24,19 @@ PostsSvc.create({
 	}
 }
 
-PostsSvc.fetch()
-.success(function(posts) {
+PostsSvc.fetch().success(function (posts) {
 	$scope.posts = posts
 })
 
 })
-
-app.service('PostsSvc', function($http) {
+// console.log('going into PostsSvc')
+app.service('PostsSvc', function ($http) {
 	this.fetch = function () {
 		return $http.get('/api/posts')
 	}
 	this.create = function (post) {
 		return $http.post('/api/posts', post)
 	}
+// console.log('Done with PostsSvc')
 })
 // })
