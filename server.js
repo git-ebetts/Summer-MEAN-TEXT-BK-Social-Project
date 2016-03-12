@@ -6,6 +6,7 @@ var app = express()
 
 app.use(bodyParser.json())
 app.use(logger ('dev'))
+app.use(require('./auth'))
 app.use(require('./controllers'))
 
 app.use('/api/sessions',
