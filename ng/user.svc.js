@@ -15,4 +15,18 @@ svc.login = function (username, password) {
 		return svc.getUser()
 	})
 }
+
+svc.register = function (username, password) {
+	return $http.post('/api/users', {
+		username: username, password: password 
+	}).then(function () {
+		return svc.login(username, password)
+	})
+}
+
+        svc.logout = function() {
+            delete $http.defaults.headers.common['X-Auth'];
+            svc.getUser()};
 })
+
+        // console.log(currentUser.username)

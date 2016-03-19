@@ -16,6 +16,9 @@
         Signed in as
         {{currentUser.username}}
       </p>
+        <p ng-if = 'currentUser' class= "navbar-text navbar-right">
+        <button class="btn btn-danger btn-xs" style="float:right; margin-top:-2px; margin-right:10px; width:50px" ng-click="remove(currentUser)">Logout</button>
+      </p>
     </div>
   </nav>
     <div ng-view></div>
