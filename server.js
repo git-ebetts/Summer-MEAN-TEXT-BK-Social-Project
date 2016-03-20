@@ -15,5 +15,6 @@ app.use('/api/users',
 	require('./controllers/api/users'))
 
 var server = app.listen(3010, function () {
-  console.log('server listening on %d', server.address().port)
+  console.log('server listening on', 3010)
 })
+require('./websockets').connect(server)

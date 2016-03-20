@@ -1,4 +1,5 @@
 var router = require('express').Router()
+var websockets = require('../../websockets')
 var Post = require('../../models/post')
 
 
@@ -20,6 +21,7 @@ router.post('/posts', function (req, res, next) {
   post.username = req.auth.username
   post.save(function (err, post) {
     if (err) { return next(err) }
+    	websockets.broadcast('new_post', post)
     res.status(201).json(post)
 	})
 })
